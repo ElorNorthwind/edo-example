@@ -10,5 +10,11 @@ module.exports = {
         sourceType: "module",
         project: ["./tsconfig.json"],
     },
-    rules: {},
+    rules: {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/prefer-nullish-coalescing": "off",
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
+    },
 };
