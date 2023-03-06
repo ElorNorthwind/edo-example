@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "NodeNext",
+    "outDir": "./build",
+    "lib": ["ES6"],
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "rootDir": "./src", // возможно и нафиг не надо?
+    "baseUrl": "./", // не работает в билде ха ха
+    "paths": { "*": ["./src/*"] }, // не работает в билде ха ха
+    "moduleResolution": "nodenext", // возможно и нафиг не надо?
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true // а будет ли работать в билде?
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"],
+  "lib": ["esnext"],
+  "ts-node": {
+    "esm": true
+  }
+}
