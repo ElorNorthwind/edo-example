@@ -1,7 +1,9 @@
-import { type AuthData, getAuthData } from "./services/api/getAuthData/getAuthData.js";
-import { getDocHtml } from "./services/api/getDocHtml/getDocHtml.js";
+import { type AuthData, getAuthData } from "./services/edoApi/getAuthData/getAuthData.js";
+import { getDocHtml } from "./services/edoApi/getDocHtml/getDocHtml.js";
 import { parseDocHtml } from "./services/parser/parseEgoDocHtml.js";
 import fs from "fs";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 // testing testing 123
 async function saveDocHTML(id: string, authData: AuthData, resultArr: any[]) {
@@ -18,8 +20,8 @@ async function wrightAllToFile() {
     const resultArr: any[] = [];
     const docList = ["489473013", "490332402", "491065535"];
     const loginData = {
-        userId: 3349311,
-        password: "!141605lorans",
+        userId: Number(process.env.EDO_USERID) || 0,
+        password: process.env.EDO_PASSWORD || "",
     };
 
     const authData = await getAuthData(loginData.userId, loginData.password);
@@ -29,8 +31,6 @@ async function wrightAllToFile() {
             await saveDocHTML(doc, authData, resultArr);
         }),
     );
-
-    // console.log(resultArr[0]);
 
     if (resultArr) {
         fs.writeFile("./test_output/result.json", JSON.stringify(resultArr), function (err) {
