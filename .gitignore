@@ -2,4 +2,3 @@
 /build
 /test_output/*
 .env
-.prettierrc
