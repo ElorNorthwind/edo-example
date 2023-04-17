@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 import { getRsmAuthData } from "./services/rsmApi/getAuthData/getRsmAuthData.js";
 import { getContractsByUnom } from "./services/rsmApi/getContractsByUnom/getContractsByUnom.js";
 import { getRoomList } from "./services/rsmApi/getRoomList/getRoomList.js";
+import { getRsmSerchResult, type RsmSearchParams } from "./services/rsmApi/getRsmSearchResult/getRsmSerchResult.js";
 // import { getFirstContractPage } from "./services/rsmApi/getContractSearchResult/getFirstContractPage.js";
 
 dotenv.config();
@@ -61,15 +62,15 @@ async function test() {
 
     // ===== TEST 1 =====
 
-    const result = await getRoomList(88, rsmToken); // Список комнат по UNOM (88)
+    // const result = await getRoomList(88, rsmToken); // Список комнат по UNOM (88)
 
-    fs.writeFile("./test_output/result.json", JSON.stringify(result), function (err) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        console.log("The file was saved!");
-    });
+    // fs.writeFile("./test_output/result.json", JSON.stringify(result), function (err) {
+    //     if (err) {
+    //         console.log(err);
+    //         return;
+    //     }
+    //     console.log("The file was saved!");
+    // });
 
     // ===== TEST 2 =====
 
@@ -98,6 +99,28 @@ async function test() {
     //     }
     //     console.log("The file was saved!");
     // });
+
+    // ===== TEST 4 =====
+
+    // const result = await getContractCount("88", sessionKey, rsmToken);
+    // console.log(result);
+
+    const searchParams: RsmSearchParams = {
+        rsmToken,
+        registerId: "RdnContract",
+        layoutId: 10231,
+        query: { dynamicControlData: { unom: [88, 89] } },
+    };
+
+    const result = await getRsmSerchResult(searchParams);
+
+    fs.writeFile("./test_output/result.json", JSON.stringify(result), function (err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log("The file was saved!");
+    });
 }
 
 test().catch((e) => {

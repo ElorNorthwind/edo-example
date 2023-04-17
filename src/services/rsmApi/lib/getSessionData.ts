@@ -6,21 +6,21 @@ interface ContractSessionData {
     fields: Record<any, any>;
 }
 
-export async function getContractUniqueSessionData(
-    rsmToken: string,
-    view: string,
-    params?: {
-        register: string;
-        layout: number;
-    },
-): Promise<ContractSessionData> {
+interface RsmSessionDataParams {
+    rsmToken: string;
+    registerId: string;
+    layoutId: number;
+}
+
+export async function getRsmSessionData(params: RsmSessionDataParams): Promise<ContractSessionData> {
+    const { rsmToken, registerId: register, layoutId: layout } = params;
     const config: AxiosRequestConfig = {
         method: "get",
         maxBodyLength: Infinity,
-        url: `/${view}`,
+        url: `/RegistersView`,
         params: {
-            RegisterId: params?.register,
-            LayoutId: params?.layout,
+            RegisterId: register,
+            LayoutId: layout,
         },
         headers: {
             Cookie: `Rsm.Cookie=${rsmToken}`,

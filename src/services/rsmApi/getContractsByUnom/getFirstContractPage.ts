@@ -20,21 +20,6 @@ export async function getFirstContractPage(
         },
     };
 
-    // const searchString = encodeURIComponent(getControlDataByUnom(unom, false));
-
-    // const url = `http://webrsm.mlc.gov:5222/Registers/GetData?RegisterId=RdnContract&LayoutId=${layoutId}&SearchDynamicControlData=${searchString}&UniqueSessionKey=${sessionKey}&UniqueSessionKeySetManually=true`;
-
-    // const config: AxiosRequestConfig = {
-    //     method: "get",
-    //     maxBodyLength: Infinity,
-    //     url,
-    //     headers: {
-    //         Cookie: `Rsm.Cookie=${rsmToken}`,
-    //         "User-Agent":
-    //             "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
-    //     },
-    // };
-
     try {
         // const response = await axios.request(config);
         const response = await rsm.request(config);

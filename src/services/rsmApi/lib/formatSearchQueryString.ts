@@ -59,7 +59,7 @@ export function formatSearchQueryString(query: RsmSearchQuery) {
         // добавляем результат в запросы
         if (controlDataArr.length > 0) {
             result.search.SearchDynamicControlData = `[${controlDataArr.join(",")}]`;
-            result.count.SearchDynamicControlData = `[${controlDataArr.join(",").replace(/"/g, `\\"`)}]`;
+            result.count.SearchDynamicControlData = `[${controlDataArr.join(",")}]`;
         }
     }
 
