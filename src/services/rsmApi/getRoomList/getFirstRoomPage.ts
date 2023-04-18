@@ -1,5 +1,4 @@
 import axios, { type AxiosRequestConfig } from "axios";
-
 export async function getFirstRoomPage(unom: number, sessionKey: string, rsmToken: string): Promise<any[]> {
     const queryString = encodeURIComponent(`?Transition=1&ShowOnlyGridWithToolbar=true&603200400=${unom}`);
     const url = `http://webrsm.mlc.gov:5222/Registers/GetData?603200400=${unom}&RegisterId=BtiRoom&isTransition=true&transitionQueryString=${queryString}&UniqueSessionKey=${sessionKey}`;

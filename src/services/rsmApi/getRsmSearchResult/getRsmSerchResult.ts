@@ -1,5 +1,5 @@
 import { type RsmSearchQuery } from "../lib/formatSearchQueryString.js";
-import { getRsmSessionData } from "../lib/getSessionData.js";
+import { getRsmSessionData } from "../lib/getRsmSessionData.js";
 import { getRsmSearchData } from "./getRsmSearchData.js";
 
 export interface RsmSearchParams {

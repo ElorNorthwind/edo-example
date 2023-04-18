@@ -1,13 +1,9 @@
-// import { type AuthData, getAuthData } from "./services/edoApi/getAuthData/getAuthData.js";
-// import { getDocHtml } from "./services/edoApi/getDocHtml/getDocHtml.js";
-// import { parseDocHtml } from "./services/parser/parseEgoDocHtml.js";
 import fs from "fs";
 import * as dotenv from "dotenv";
 import { getRsmAuthData } from "./services/rsmApi/getAuthData/getRsmAuthData.js";
-import { getContractsByUnom } from "./services/rsmApi/getContractsByUnom/getContractsByUnom.js";
-import { getRoomList } from "./services/rsmApi/getRoomList/getRoomList.js";
-import { getRsmSerchResult, type RsmSearchParams } from "./services/rsmApi/getRsmSearchResult/getRsmSerchResult.js";
-// import { getFirstContractPage } from "./services/rsmApi/getContractSearchResult/getFirstContractPage.js";
+import { getRsmContractsByUnom } from "./services/rsmApi/getBySearches/getRsmContractsByUnom.js";
+import { getRsmRightsByHouseCadNum } from "./services/rsmApi/getBySearches/getRsmRightsByHouseCadNum.js";
+import { getRsmLivingSpaceByBtiUnom } from "./services/rsmApi/getBySearches/getRsmLivingSpaceByBtiUnom.js";
 
 dotenv.config();
 
@@ -105,14 +101,9 @@ async function test() {
     // const result = await getContractCount("88", sessionKey, rsmToken);
     // console.log(result);
 
-    const searchParams: RsmSearchParams = {
-        rsmToken,
-        registerId: "RdnContract",
-        layoutId: 10231,
-        query: { dynamicControlData: { unom: [88, 89] } },
-    };
-
-    const result = await getRsmSerchResult(searchParams);
+    // const result = await getRsmContractsByUnom(rsmToken, [88, 89]);  test unom: 13489
+    // const result = await getRsmRightsByHouseCadNum(rsmToken, "77:08:0006013:1001");
+    const result = await getRsmLivingSpaceByBtiUnom(rsmToken, [88, 89]);
 
     fs.writeFile("./test_output/result.json", JSON.stringify(result), function (err) {
         if (err) {
