@@ -52,7 +52,6 @@ export async function getRsmSearchData(params: RsmDataSearchParams): Promise<Rsm
         do {
             const additionalData = await getAddData(registerId, sessionKey, rsmToken);
             data = [...data, ...additionalData];
-            console.log(`${String(count)} из ${String(data.length)}`);
         } while (data.length < count);
 
         // возвращаем объект с данными

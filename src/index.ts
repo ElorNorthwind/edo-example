@@ -49,12 +49,12 @@ dotenv.config();
 //     console.log(e);
 // });
 
-// getRsmAuthData("HQ\\ShepelevSA", "!141605lorans").catch((e) => {
+// getRsmAuthData(_, _).catch((e) => {
 //     console.log(e);
 // });
 
 async function test() {
-    const rsmToken = await getRsmAuthData("HQ\\ShepelevSA", "!141605lorans");
+    const rsmToken = await getRsmAuthData(process.env.SUDIR_LOGIN || "", process.env.SUDIR_PASSWORD || "");
 
     // ===== TEST 1 =====
 
@@ -102,8 +102,8 @@ async function test() {
     // console.log(result);
 
     // const result = await getRsmContractsByUnom(rsmToken, [88, 89]);  test unom: 13489
-    // const result = await getRsmRightsByHouseCadNum(rsmToken, "77:08:0006013:1001");
-    const result = await getRsmLivingSpaceByBtiUnom(rsmToken, [88, 89]);
+    const result = await getRsmRightsByHouseCadNum(rsmToken, "77:08:0006013:1001");
+    // const result = await getRsmLivingSpaceByBtiUnom(rsmToken, [88, 89]);
 
     fs.writeFile("./test_output/result.json", JSON.stringify(result), function (err) {
         if (err) {
